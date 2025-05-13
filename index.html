@@ -1,15 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tap the Emoji</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>👆 Tap the Emoji!</h1>
-  <div id="player-name">Player: </div>
-  <div id="score">Score: 0</div>
-  <div id="game-area"></div>
-  <button id="start-btn">Start Game</button>
+  <!-- Splash Screen -->
+  <div id="splash-screen" class="splash-screen">
+    <div class="emoji-showcase">
+      <span>🎮</span>
+      <span>🎯</span>
+      <span>🎪</span>
+    </div>
+    <h1>Emoji Tap!</h1>
+    <p>How fast can you find the matching emoji?</p>
+    <button id="start-btn" class="start-btn">Start Game</button>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game-screen" class="game-screen">
+    <div class="container">
+      <div class="header">
+        <div class="player-info">
+          <div id="avatar" class="avatar">U</div>
+          <span id="player-name" class="player-name">Player</span>
+        </div>
+        <div id="score" class="score-display">Score: 0</div>
+      </div>
+
+      <div class="target-container">
+        <div class="target-label">Find this emoji:</div>
+        <div id="target-emoji" class="target-emoji">🎯</div>
+      </div>
+
+      <div id="game-area" class="game-area"></div>
+    </div>
+  </div>
+
+  <!-- Game Over Screen -->
+  <div id="game-over" class="game-over">
+    <div class="game-over-card">
+      <div class="game-over-title">Game Over!</div>
+      <p>Your final score:</p>
+      <div id="final-score" class="final-score">0</div>
+      <button id="restart-btn" class="restart-btn">Play Again</button>
+    </div>
+  </div>
 
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script src="script.js"></script>
