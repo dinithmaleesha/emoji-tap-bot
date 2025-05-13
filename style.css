@@ -27,6 +27,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 body.dark {
@@ -35,10 +36,10 @@ body.dark {
 }
 
 .container {
-  max-width: 500px;
-  width: 100%;
+  max-width: 100%;
+  width: 90%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 5vw 3vw;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -175,6 +176,23 @@ body.dark .splash-screen {
   font-weight: bold;
 }
 
+.timer-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 10px;
+  position: relative;
+}
+
+.timer-fill {
+  height: 100%;
+  background-color: green;
+  border-radius: 10px;
+  width: 100%; 
+  transition: width linear;
+}
+
+
 .target-container {
   background-color: var(--card-light);
   border-radius: 12px;
@@ -211,18 +229,22 @@ body.dark .target-container {
 
 .game-area {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, auto);
+  gap: 10px;
+  justify-content: center;
+  align-content: center;
+  padding: 10px 0;
   flex-grow: 1;
-  margin-bottom: 20px;
 }
 
 .emoji-btn {
+  width: 100%;
   aspect-ratio: 1;
+  font-size: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
   background-color: var(--card-light);
   border: none;
   border-radius: 12px;
@@ -272,11 +294,11 @@ body.dark .emoji-btn {
 .game-over-card {
   background-color: var(--card-light);
   border-radius: 16px;
-  padding: 30px;
   text-align: center;
-  max-width: 300px;
-  width: 80%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  width: 100%;
+  padding: 20px;
 }
 
 body.dark .game-over-card {
@@ -327,4 +349,34 @@ body.dark .game-over-card {
 
 .slideIn {
   animation: slideIn 0.5s ease forwards;
+}
+
+@media (max-width: 600px) {
+  .splash-screen h1 {
+    font-size: 1.8rem;
+  }
+
+  .splash-screen p,
+  .target-label {
+    font-size: 1rem;
+  }
+
+  .start-btn,
+  .restart-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+
+  .target-emoji {
+    font-size: 2.5rem;
+  }
+
+  .emoji-btn {
+    font-size: 1.5rem;
+  }
+
+  .score-display {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
 }
