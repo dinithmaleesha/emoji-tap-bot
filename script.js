@@ -33,10 +33,10 @@ let consecutiveCorrect = 0;
 let gameLevel = 1;
 let roundDelay = 300;
 
-let timerInterval;
-let timeLeft = 10;
-let timerStarted = false;
-const timerEl = document.getElementById('timer');
+// let timerInterval;
+// let timeLeft = 10;
+// let timerStarted = false;
+// const timerEl = document.getElementById('timer');
 
 // Apply Telegram theme
 function applyTelegramTheme() {
@@ -98,10 +98,10 @@ function startGame() {
   gameLevel = 1;
   updateScore();
 
-  clearInterval(timerInterval);
-  timeLeft = 10;
-  timerStarted = false;
-  updateTimerDisplay();
+  // clearInterval(timerInterval);
+  // timeLeft = 10;
+  // timerStarted = false;
+  // updateTimerDisplay();
   
   splashScreen.style.opacity = '0';
   setTimeout(() => {
@@ -118,10 +118,10 @@ function startGame() {
 
 // Restart the game
 function restartGame() {
-  clearInterval(timerInterval);
-  timeLeft = 10;
-  timerStarted = false;
-  updateTimerDisplay();
+  // clearInterval(timerInterval);
+  // timeLeft = 10;
+  // timerStarted = false;
+  // updateTimerDisplay();
   gameOverScreen.style.display = 'none';
   score = 0;
   chances = 3;
@@ -171,18 +171,18 @@ function handleTap(tappedEmoji, button) {
   if (!gameActive || chances <= 0) return;  // Stop the game if no chances left
 
   // Start timer
-  if (!timerStarted) {
-    startTimer();
-    timerStarted = true;
-  }
+  // if (!timerStarted) {
+  //   startTimer();
+  //   timerStarted = true;
+  // }
 
   if (tappedEmoji === correctEmoji) {
     // ✅ Correct tap
     button.classList.add('correct');
-    resetTimer();
+    // resetTimer();
 
-    timeLeft = Math.max(3, 10 - gameLevel); 
-    updateTimerDisplay();
+    // timeLeft = Math.max(3, 10 - gameLevel); 
+    // updateTimerDisplay();
 
     score += gameLevel;
     consecutiveCorrect++;
@@ -195,8 +195,8 @@ function handleTap(tappedEmoji, button) {
       gameLevel++;
       consecutiveCorrect = 0;
 
-      timeLeft = Math.max(3, 10 - gameLevel); 
-      updateTimerDisplay();
+      // timeLeft = Math.max(3, 10 - gameLevel); 
+      // updateTimerDisplay();
 
       roundDelay = Math.max(100, 300 - (gameLevel * 20));
     }
@@ -211,7 +211,7 @@ function handleTap(tappedEmoji, button) {
     // ❌ Wrong tap
     button.classList.add('wrong');
     chances--;
-    resetTimer();
+    // resetTimer();
     
     if (chances <= 0) {
       gameActive = false;
@@ -227,49 +227,49 @@ function handleTap(tappedEmoji, button) {
   }
 }
 
-function resetTimer() {
-  timeLeft = 10;
-  updateTimerDisplay();
-  const timerFill = document.getElementById('timer-fill');
-  timerFill.style.transition = 'none';
-  timerFill.style.width = '100%';
+// function resetTimer() {
+//   timeLeft = 10;
+//   updateTimerDisplay();
+//   const timerFill = document.getElementById('timer-fill');
+//   timerFill.style.transition = 'none';
+//   timerFill.style.width = '100%';
   
-  setTimeout(() => {
-    timerFill.style.transition = 'width 1s linear';
-  }, 50);
-}
+//   setTimeout(() => {
+//     timerFill.style.transition = 'width 1s linear';
+//   }, 50);
+// }
 
-function startTimer() {
-  timeLeft = 10;
-  updateTimerDisplay();
+// function startTimer() {
+//   timeLeft = 10;
+//   updateTimerDisplay();
 
-  timerInterval = setInterval(() => {
-    timeLeft--;
-    updateTimerDisplay();
+//   timerInterval = setInterval(() => {
+//     timeLeft--;
+//     updateTimerDisplay();
 
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval);
-      gameActive = false;
-      timerStarted = false;
-      showGameOver();
-    }
-  }, 1000);
-}
+//     if (timeLeft <= 0) {
+//       clearInterval(timerInterval);
+//       gameActive = false;
+//       timerStarted = false;
+//       showGameOver();
+//     }
+//   }, 1000);
+// }
 
-function updateTimerDisplay() {
-  const timerFill = document.getElementById('timer-fill');
+// function updateTimerDisplay() {
+//   const timerFill = document.getElementById('timer-fill');
   
-  const percentage = (timeLeft / 10) * 100; 
-  timerFill.style.width = `${percentage}%`;
+//   const percentage = (timeLeft / 10) * 100; 
+//   timerFill.style.width = `${percentage}%`;
 
-  if (timeLeft <= 3) {
-    timerFill.style.backgroundColor = 'red';
-  } else if (timeLeft <= 6) {
-    timerFill.style.backgroundColor = 'orange';
-  } else {
-    timerFill.style.backgroundColor = 'green';
-  }
-}
+//   if (timeLeft <= 3) {
+//     timerFill.style.backgroundColor = 'red';
+//   } else if (timeLeft <= 6) {
+//     timerFill.style.backgroundColor = 'orange';
+//   } else {
+//     timerFill.style.backgroundColor = 'green';
+//   }
+// }
 
 function showGameOver() {
   gameOverScreen.style.display = 'flex';
